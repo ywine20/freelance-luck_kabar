@@ -16,7 +16,7 @@ class CreateYearsTable extends Migration
         Schema::create('years', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('series_id');
-            $table->year('year');
+            $table->unsignedInteger('year'); // Change 'year' to 'unsignedInteger'
             $table->timestamps();
 
             // Foreign key constraint

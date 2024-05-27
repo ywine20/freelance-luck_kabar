@@ -10,6 +10,5 @@ class Series extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'year_id',
     ];
 }

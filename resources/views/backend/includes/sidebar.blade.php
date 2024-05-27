@@ -1,10 +1,10 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
         <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
+            <use xlink:href="{{ asset('img/brand/logoBig.png#full') }}"></use>
         </svg>
         <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
+            <use xlink:href="{{ asset('img/brand/logoBig.png#signet') }}"></use>
         </svg>
     </div><!--c-sidebar-brand-->
 
@@ -72,7 +72,7 @@
             </li>
         @endif
 
-        @if ($logged_in_user->hasAllAccess())
+        <!-- @if ($logged_in_user->hasAllAccess())
             <li class="c-sidebar-nav-dropdown">
                 <x-utils.link
                     href="#"
@@ -95,7 +95,49 @@
                     </li>
                 </ul>
             </li>
-        @endif
+        @endif -->
+        <li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.sliders.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Sliders')" />
+    </li>
+    <li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.main_categories.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Main Categories')" />
+</li>
+    <li class="c-sidebar-nav-item">
+        <x-utils.link
+            :href="route('admin.series.index')"
+            class="c-sidebar-nav-link"
+            :text="__('Series')" />
+    </li>
+    <li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.companies.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Companies')" />
+</li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.car_models.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Car Models')" />
+</li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.years.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Years')" />
+</li>
+
+
+
+
+
+
     </ul>
 
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
