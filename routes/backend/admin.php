@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SeriesController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\CarModelController;
 use App\Http\Controllers\Backend\YearController;
+use App\Http\Controllers\Backend\BrandController;    
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.
@@ -58,6 +59,14 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::get('/years/{year}/edit', [YearController::class, 'edit'])->name('years.edit');
         Route::put('/years/{year}', [YearController::class, 'update'])->name('years.update');
         Route::delete('/years/{year}', [YearController::class, 'destroy'])->name('years.destroy');
+
+        Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
+        Route::get('/brands/create', [BrandController::class, 'create'])->name('brands.create');
+        Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+        Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+        Route::put('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
+        Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
+
 
     });
    

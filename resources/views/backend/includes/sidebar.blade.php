@@ -1,11 +1,14 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
-        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/logoBig.png#full') }}"></use>
-        </svg>
-        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/logoBig.png#signet') }}"></use>
-        </svg>
+    <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+    <!-- <use xlink:href="{{ asset('img/brand/coreui1.svg#full') }}"></use> -->
+    <!-- <img src="{{ asset('img/brand/logoBig.png') }}" alt="" width="100"> -->
+
+</svg>
+<svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
+    <use xlink:href="{{ asset('img/brand/coreui1.svg#signet') }}"></use>
+</svg>
+
     </div><!--c-sidebar-brand-->
 
     <ul class="c-sidebar-nav">
@@ -132,6 +135,13 @@
         class="c-sidebar-nav-link"
         :text="__('Years')" />
 </li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.brands.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Brands')" />
+</li>
+
 
 
 

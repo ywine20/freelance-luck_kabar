@@ -27,16 +27,16 @@ class SliderController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'link' => 'required|string|max:255',
         ]);
-    
+
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('images/sliders'), $imageName);
-    
+
         Slider::create([
             'name' => $request->name,
             'image' => $imageName,
             'link' => $request->link,
         ]);
-    
+
         return redirect()->route('admin.sliders.index')->with('success', 'Slider created successfully.');
     }
 
