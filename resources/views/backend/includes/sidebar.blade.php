@@ -111,6 +111,12 @@
         class="c-sidebar-nav-link"
         :text="__('Main Categories')" />
 </li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.second_categories.index')"
+        class="c-sidebar-nav-link"
+        :text="__('second Categories')" />
+</li>
     <li class="c-sidebar-nav-item">
         <x-utils.link
             :href="route('admin.series.index')"

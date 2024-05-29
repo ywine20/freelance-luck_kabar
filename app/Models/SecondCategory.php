@@ -10,11 +10,11 @@ class SecondCategory extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'item_id',
+        // 'item_id',
     ];
 
-    public function item()
-    {
-        return $this->belongsTo(Item::class);
-    }
+    // public function item()
+    // {
+    //     return $this->belongsTo(Item::class);
+    // }
 }

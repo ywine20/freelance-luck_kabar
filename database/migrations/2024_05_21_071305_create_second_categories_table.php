@@ -16,9 +16,9 @@ class CreateSecondCategoriesTable extends Migration
         Schema::create('second_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('item_id');
+            // $table->unsignedBigInteger('item_id');
             $table->timestamps();
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 
