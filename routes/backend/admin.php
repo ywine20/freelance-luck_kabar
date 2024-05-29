@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\MainCategoryController;
+use App\Http\Controllers\Backend\SecondCategoryController;
 use App\Http\Controllers\Backend\SeriesController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\CarModelController;
@@ -31,6 +32,14 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::get('/main_categories/{main_category}/edit', [MainCategoryController::class, 'edit'])->name('main_categories.edit');
         Route::put('/main_categories/{main_category}', [MainCategoryController::class, 'update'])->name('main_categories.update');
         Route::delete('/main_categories/{main_category}', [MainCategoryController::class, 'destroy'])->name('main_categories.destroy');
+
+        Route::get('/second_categories', [SecondCategoryController::class, 'index'])->name('second_categories.index');
+        Route::get('/second_categories/create', [SecondCategoryController::class, 'create'])->name('second_categories.create');
+        Route::post('/second_categories', [SecondCategoryController::class, 'store'])->name('second_categories.store');
+        Route::get('/second_categories/{second_category}/edit', [SecondCategoryController::class, 'edit'])->name('second_categories.edit');
+        Route::put('/second_categories/{second_category}', [SecondCategoryController::class, 'update'])->name('second_categories.update');
+        Route::delete('/second_categories/{second_category}', [SecondCategoryController::class, 'destroy'])->name('second_categories.destroy');
+
 
         Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
         Route::get('/series/create', [SeriesController::class, 'create'])->name('series.create');
