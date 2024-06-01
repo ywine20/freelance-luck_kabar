@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
+use App\Models\CarItem;
+use App\Http\Requests\StoreCarItemRequest;
+use App\Http\Requests\UpdateCarItemRequest;
 
-class BrandController extends Controller
+class CarItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBrandRequest  $request
+     * @param  \App\Http\Requests\StoreCarItemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store(StoreCarItemRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\CarItem  $carItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(CarItem $carItem)
     {
         //
     }
@@ -53,10 +53,10 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\CarItem  $carItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(CarItem $carItem)
     {
         //
     }
@@ -64,11 +64,11 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBrandRequest  $request
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Http\Requests\UpdateCarItemRequest  $request
+     * @param  \App\Models\CarItem  $carItem
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateCarItemRequest $request, CarItem $carItem)
     {
         //
     }
@@ -76,10 +76,10 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\CarItem  $carItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(CarItem $carItem)
     {
         //
     }

@@ -3,10 +3,14 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\MainCategoryController;
+use App\Http\Controllers\Backend\SecondCategoryController;
 use App\Http\Controllers\Backend\SeriesController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\CarModelController;
 use App\Http\Controllers\Backend\YearController;
+use App\Http\Controllers\Backend\BrandController;    
+use App\Http\Controllers\Backend\ItemController; 
+use App\Http\Controllers\Backend\CarController;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.
@@ -30,6 +34,14 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::get('/main_categories/{main_category}/edit', [MainCategoryController::class, 'edit'])->name('main_categories.edit');
         Route::put('/main_categories/{main_category}', [MainCategoryController::class, 'update'])->name('main_categories.update');
         Route::delete('/main_categories/{main_category}', [MainCategoryController::class, 'destroy'])->name('main_categories.destroy');
+
+        Route::get('/second_categories', [SecondCategoryController::class, 'index'])->name('second_categories.index');
+        Route::get('/second_categories/create', [SecondCategoryController::class, 'create'])->name('second_categories.create');
+        Route::post('/second_categories', [SecondCategoryController::class, 'store'])->name('second_categories.store');
+        Route::get('/second_categories/{second_category}/edit', [SecondCategoryController::class, 'edit'])->name('second_categories.edit');
+        Route::put('/second_categories/{second_category}', [SecondCategoryController::class, 'update'])->name('second_categories.update');
+        Route::delete('/second_categories/{second_category}', [SecondCategoryController::class, 'destroy'])->name('second_categories.destroy');
+
 
         Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
         Route::get('/series/create', [SeriesController::class, 'create'])->name('series.create');
@@ -58,6 +70,28 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::get('/years/{year}/edit', [YearController::class, 'edit'])->name('years.edit');
         Route::put('/years/{year}', [YearController::class, 'update'])->name('years.update');
         Route::delete('/years/{year}', [YearController::class, 'destroy'])->name('years.destroy');
+
+        Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
+        Route::get('/brands/create', [BrandController::class, 'create'])->name('brands.create');
+        Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+        Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+        Route::put('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
+        Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
+
+        Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+        Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+        Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+        Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
+        Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
+        Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
+
+        Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+        Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
+        Route::post('/cars', [CarController::class, 'store'])->name('cars.store');
+        Route::get('/cars/{car}/edit', [CarController::class, 'edit'])->name('cars.edit');
+        Route::put('/cars/{car}', [CarController::class, 'update'])->name('cars.update');
+        Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.destroy');
+
 
     });
    

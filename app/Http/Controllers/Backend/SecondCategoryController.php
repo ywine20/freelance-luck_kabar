@@ -2,85 +2,54 @@
 
 namespace App\Http\Controllers\Backend;
 
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\Controller;
 use App\Models\SecondCategory;
-use App\Http\Requests\StoreSecondCategoryRequest;
-use App\Http\Requests\UpdateSecondCategoryRequest;
+use Illuminate\Http\Request;
 
 class SecondCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $secondCategories = SecondCategory::all();
+        return view('backend.second_categories.index', compact('secondCategories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('backend.second_categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSecondCategoryRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSecondCategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        SecondCategory::create($request->all());
+
+        return redirect()->route('admin.second_categories.index')->with('success', 'Second Category created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SecondCategory  $secondCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SecondCategory $secondCategory)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SecondCategory  $secondCategory
-     * @return \Illuminate\Http\Response
-     */
     public function edit(SecondCategory $secondCategory)
     {
-        //
+        return view('backend.second_categories.edit', compact('secondCategory'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSecondCategoryRequest  $request
-     * @param  \App\Models\SecondCategory  $secondCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSecondCategoryRequest $request, SecondCategory $secondCategory)
+    public function update(Request $request, SecondCategory $secondCategory)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $secondCategory->update($request->all());
+        return redirect()->route('admin.second_categories.index')->with('success', 'Second Category updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SecondCategory  $secondCategory
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(SecondCategory $secondCategory)
     {
-        //
+        $secondCategory->delete();
+        return redirect()->route('admin.second_categories.index')->with('success', 'Second Category deleted successfully.');
     }
 }
