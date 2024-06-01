@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\CarModelController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Backend\BrandController;    
+use App\Http\Controllers\Backend\ItemController; 
+use App\Http\Controllers\Backend\CarController;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.
@@ -75,6 +77,20 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
         Route::put('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
         Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
+
+        Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+        Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+        Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+        Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
+        Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
+        Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
+
+        Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+        Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
+        Route::post('/cars', [CarController::class, 'store'])->name('cars.store');
+        Route::get('/cars/{car}/edit', [CarController::class, 'edit'])->name('cars.edit');
+        Route::put('/cars/{car}', [CarController::class, 'update'])->name('cars.update');
+        Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.destroy');
 
 
     });
