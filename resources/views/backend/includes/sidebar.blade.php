@@ -105,53 +105,63 @@
         class="c-sidebar-nav-link"
         :text="__('Sliders')" />
     </li>
-    <li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.main_categories.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Main Categories')" />
-    </li>
-<li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.second_categories.index')"
-        class="c-sidebar-nav-link"
-        :text="__('second Categories')" />
+    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon cil-list"></i> {{ __('Categories') }}
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.main_categories.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Main Categories')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.second_categories.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Second Categories')" />
+        </li>
+    </ul>
 </li>
-    <li class="c-sidebar-nav-item">
-        <x-utils.link
-            :href="route('admin.series.index')"
-            class="c-sidebar-nav-link"
-            :text="__('Series')" />
-    </li>
-    <li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.companies.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Companies')" />
-</li>
-<li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.car_models.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Car Models')" />
-</li>
-<li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.years.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Years')" />
-</li>
-<li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.brands.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Brands')" />
-</li>
-<li class="c-sidebar-nav-item">
-    <x-utils.link
-        :href="route('admin.items.index')"
-        class="c-sidebar-nav-link"
-        :text="__('Items')" />
+
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+    <i class="c-sidebar-nav-icon cil-list"></i>{{ __('To Create Cars') }}
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.series.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Series')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.brands.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Brands')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.companies.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Companies')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.car_models.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Car Models')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                :href="route('admin.years.index')"
+                class="c-sidebar-nav-link"
+                :text="__('Years')" />
+        </li>
+      
+    </ul>
 </li>
 <li class="c-sidebar-nav-item">
     <x-utils.link
@@ -159,13 +169,12 @@
         class="c-sidebar-nav-link"
         :text="__('Cars')" />
 </li>
-
-
-
-
-
-
-
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.items.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Items')" />
+</li>
 
     </ul>
 
