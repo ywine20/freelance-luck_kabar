@@ -110,7 +110,7 @@
         :href="route('admin.main_categories.index')"
         class="c-sidebar-nav-link"
         :text="__('Main Categories')" />
-</li>
+    </li>
 <li class="c-sidebar-nav-item">
     <x-utils.link
         :href="route('admin.second_categories.index')"
@@ -147,6 +147,19 @@
         class="c-sidebar-nav-link"
         :text="__('Brands')" />
 </li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.items.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Items')" />
+</li>
+<li class="c-sidebar-nav-item">
+    <x-utils.link
+        :href="route('admin.cars.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Cars')" />
+</li>
+
 
 
 

@@ -10,61 +10,31 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'brand_id',
-        'second_category_id',
-        'company_id',
-        'series_id',
-        'carmodel_id',
-        'year_id',
         'name',
+        'second_category_id',
+        'main_category_id',
         'image',
         'is_feature',
         'OE_No',
-        'price',
+        'price'
     ];
-
-    // Define relationships if needed
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
 
     public function secondCategory()
     {
         return $this->belongsTo(SecondCategory::class);
     }
 
-    public function company()
+    public function mainCategory()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(MainCategory::class);
     }
 
-    public function series()
+    public function carItems()
     {
-        return $this->belongsTo(Series::class);
+        return $this->hasMany(CarItem::class);
     }
-
-    public function model()
+    public function cars()
     {
-        return $this->belongsTo(CarModel::class,'model_id');
-    }
-
-    public function year()
-    {
-        return $this->belongsTo(Year::class);
-    }
-
-    public function orderItems()
-    {
-        return $this->hasMany(OrderItem::class);
-    }
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
-
-    public function discounts()
-    {
-        return $this->hasMany(Discount::class);
+        return $this->belongsToMany(Car::class, 'car_items');
     }
 }
