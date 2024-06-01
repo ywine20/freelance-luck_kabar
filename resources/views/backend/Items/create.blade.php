@@ -26,13 +26,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="cars">Cars</label>
-                <select class="form-control" id="cars" name="cars[]" multiple>
-                    @foreach ($cars as $car)
-                        <option value="{{ $car->id }}">{{ $car->description }}</option>
-                    @endforeach
-                </select>
-            </div>
+    <label for="cars">Cars</label>
+    <select class="form-control" id="cars" name="cars[]" multiple>
+        @foreach ($cars as $car)
+            <option value="{{ $car->id }}">{{ $car->description }}</option>
+        @endforeach
+    </select>
+</div>
+
+
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" class="form-control-file" id="image" name="image" required>
