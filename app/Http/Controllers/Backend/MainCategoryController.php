@@ -23,11 +23,9 @@ class MainCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'OE_No' => 'required|string|max:255',
-            'total_price' => 'required|numeric',
         ]);
 
-        MainCategory::create($request->all());
+        MainCategory::create($request->only('name'));
 
         return redirect()->route('admin.main_categories.index')->with('success', 'Main Category created successfully.');
     }
@@ -41,18 +39,15 @@ class MainCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'OE_No' => 'required|string|max:255',
-            'total_price' => 'required|numeric',
         ]);
 
-        $main_category->update($request->all());
-        return redirect()->route('main_categories.index')->with('success', 'Main Category updated successfully.');
+        $main_category->update($request->only('name'));
+        return redirect()->route('admin.main_categories.index')->with('success', 'Main Category updated successfully.');
     }
 
     public function destroy(MainCategory $main_category)
     {
         $main_category->delete();
-        return redirect()->route('main_categories.index')->with('success', 'Main Category deleted successfully.');
+        return redirect()->route('admin.main_categories.index')->with('success', 'Main Category deleted successfully.');
     }
 }
-

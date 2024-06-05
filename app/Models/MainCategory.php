@@ -10,7 +10,5 @@ class MainCategory extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'OE_No',
-        'total_price',
     ];
 }

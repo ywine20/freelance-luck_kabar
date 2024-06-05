@@ -15,10 +15,7 @@ class CreateMainCategoriesTable extends Migration
     {
         Schema::create('main_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('OE_No'); // corrected column name
-            $table->float('total_price'); // added missing semicolon
-
+            $table->string('name'); // added missing semicolon
             $table->timestamps();
         });
     }

@@ -9,8 +9,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>OE No</th>
-                    <th>Total Price</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,8 +17,6 @@
                     <tr>
                         <td>{{ $mainCategory->id }}</td>
                         <td>{{ $mainCategory->name }}</td>
-                        <td>{{ $mainCategory->OE_No }}</td>
-                        <td>{{ $mainCategory->total_price }}</td>
                         <td>
                             <a href="{{ route('admin.main_categories.edit', $mainCategory->id) }}" class="btn btn-sm btn-primary">Edit</a>
                             <form action="{{ route('admin.main_categories.destroy', $mainCategory->id) }}" method="POST" style="display:inline">
