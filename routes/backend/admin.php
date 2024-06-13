@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Backend\BrandController;    
 use App\Http\Controllers\Backend\ItemController; 
 use App\Http\Controllers\Backend\CarController;
+use App\Http\Controllers\Backend\EnginePowerController;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.
@@ -92,6 +93,12 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         Route::put('/cars/{car}', [CarController::class, 'update'])->name('cars.update');
         Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.destroy');
 
+        Route::get('/engine-powers', [EnginePowerController::class, 'index'])->name('engine_powers.index');
+    Route::get('/engine-powers/create', [EnginePowerController::class, 'create'])->name('engine_powers.create');
+    Route::post('/engine-powers', [EnginePowerController::class, 'store'])->name('engine_powers.store');
+    Route::get('/engine-powers/{enginePower}/edit', [EnginePowerController::class, 'edit'])->name('engine_powers.edit');
+    Route::put('/engine-powers/{enginePower}', [EnginePowerController::class, 'update'])->name('engine_powers.update');
+    Route::delete('/engine-powers/{enginePower}', [EnginePowerController::class, 'destroy'])->name('engine_powers.destroy');
 
     });
    

@@ -13,7 +13,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::with(['secondCategory', 'mainCategory', 'cars'])->get();
+        $items = Item::with(['secondCategory', 'mainCategory', 'cars', 'images'])->get();
         return view('backend.items.index', compact('items'));
     }
 
@@ -31,21 +31,26 @@ class ItemController extends Controller
             'second_category_id' => 'required|exists:second_categories,id',
             'main_category_id' => 'required|exists:main_categories,id',
             'name' => 'required|string|max:255',
-            'image' => 'required|image|max:2048',
+            'brandName' => 'required|string|max:255',
+            'images' => 'required|array',
+            'images.*' => 'image|max:2048',
             'is_feature' => 'required|boolean',
-            'OE_No' => 'required|string|max:255',
+            'OE_No' => 'required|string|max:255|unique:items,OE_No',
             'price' => 'required|numeric',
             'cars' => 'array|exists:cars,id',
         ]);
 
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images/items'), $imageName);
-
         $data = $request->all();
-        $data['image'] = 'images/items/' . $imageName;
-
         $item = Item::create($data);
         $item->cars()->sync($request->cars);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '-' . uniqid() . '.' . $image->extension();
+                $image->move(public_path('images/items'), $imageName);
+                $item->images()->create(['path' => 'images/items/' . $imageName]);
+            }
+        }
 
         return redirect()->route('admin.items.index')->with('success', 'Item created successfully.');
     }
@@ -64,22 +69,25 @@ class ItemController extends Controller
             'second_category_id' => 'required|exists:second_categories,id',
             'main_category_id' => 'required|exists:main_categories,id',
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:2048',
             'is_feature' => 'required|boolean',
-            'OE_No' => 'required|string|max:255',
+            'OE_No' => 'required|string|max:255|unique:items,OE_No,' . $item->id,
             'price' => 'required|numeric',
             'cars' => 'array|exists:cars,id',
         ]);
 
         $data = $request->all();
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/items'), $imageName);
-            $data['image'] = 'images/items/' . $imageName;
-        }
-
         $item->update($data);
         $item->cars()->sync($request->cars);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '-' . uniqid() . '.' . $image->extension();
+                $image->move(public_path('images/items'), $imageName);
+                $item->images()->create(['path' => 'images/items/' . $imageName]);
+            }
+        }
 
         return redirect()->route('admin.items.index')->with('success', 'Item updated successfully.');
     }

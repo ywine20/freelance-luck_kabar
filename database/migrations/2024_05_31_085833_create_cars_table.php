@@ -15,18 +15,20 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('brand_id');
+            // $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('series_id');
             $table->unsignedBigInteger('model_id');
             $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('engine_id');
             $table->string('description');
 
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            // $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
             $table->foreign('model_id')->references('id')->on('car_models')->onDelete('cascade');
             $table->foreign('year_id')->references('id')->on('years')->onDelete('cascade');
+            $table->foreign('engine_id')->references('id')->on('engine_powers')->onDelete('cascade');
             $table->timestamps();
         });
     }

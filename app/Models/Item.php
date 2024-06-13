@@ -11,9 +11,10 @@ class Item extends Model
 
     protected $fillable = [
         'name',
+        'brandName',
         'second_category_id',
         'main_category_id',
-        'image',
+        'images',
         'is_feature',
         'OE_No',
         'price'

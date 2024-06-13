@@ -9,9 +9,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Brand Name</th>
                     <th>Second Category</th>
                     <th>Main Category</th>
-                    <th>Image</th>
+                    <th>Images</th>
                     <th>Is Feature</th>
                     <th>OE Number</th>
                     <th>Price</th>
@@ -24,9 +25,14 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->brandName }}</td>
                         <td>{{ $item->secondCategory->name }}</td>
                         <td>{{ $item->mainCategory->name }}</td>
-                        <td><img src="{{ asset($item->image) }}" alt="{{ $item->name }}" width="100"></td>
+                        <td>
+                            @foreach ($item->images as $image)
+                                <img src="{{ asset($image->path) }}" alt="{{ $item->name }}" width="100">
+                            @endforeach
+                        </td>
                         <td>{{ $item->is_feature ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->OE_No }}</td>
                         <td>{{ $item->price }}</td>

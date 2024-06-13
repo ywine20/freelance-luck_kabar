@@ -22,17 +22,18 @@ class Car extends Model
      * @var array
      */
     protected $fillable = [
-        'brand_id',
+        // 'brand_id',
         'company_id',
         'series_id',
         'model_id',
         'year_id',
+        'engine_id',
         'description',
     ];
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
+    // public function brand()
+    // {
+    //     return $this->belongsTo(Brand::class);
+    // }
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -49,6 +50,10 @@ class Car extends Model
     public function year()
     {
         return $this->belongsTo(Year::class);
+    }
+    public function enginePower()
+    {
+        return $this->belongsTo(EnginePower::class);
     }
     public function items()
     {

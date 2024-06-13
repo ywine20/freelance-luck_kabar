@@ -11,6 +11,10 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ $item->name }}" required>
             </div>
             <div class="form-group">
+                <label for="brandName">Brand Name</label>
+                <input type="text" class="form-control" id="brandName" name="brandName" value="{{ $item->brandName }}" required>
+            </div>
+            <div class="form-group">
                 <label for="second_category_id">Second Category</label>
                 <select class="form-control" id="second_category_id" name="second_category_id" required>
                     @foreach ($secondCategories as $secondCategory)
