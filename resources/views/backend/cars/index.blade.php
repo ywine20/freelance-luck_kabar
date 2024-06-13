@@ -23,7 +23,7 @@
                         <td>{{ $car->id }}</td>
                         <td>{{ $car->company->name }}</td>
                         <td>{{ $car->series->name }}</td>
-                        <td>{{ $car->enginePower ? $car->engine->enginepower : 'N/A' }}</td>
+                        <td>{{ $car->engine ? $car->engine->enginepower : 'N/A' }}</td>
                         <td>{{ $car->model->name }}</td>
                         <td>{{ $car->year->year }}</td>
                         <td>{{ $car->description }}</td>

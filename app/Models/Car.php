@@ -51,9 +51,9 @@ class Car extends Model
     {
         return $this->belongsTo(Year::class);
     }
-    public function enginePower()
+    public function engine()
     {
-        return $this->belongsTo(EnginePower::class);
+        return $this->belongsTo(EnginePower::class, 'engine_id');
     }
     public function items()
     {

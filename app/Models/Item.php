@@ -14,7 +14,6 @@ class Item extends Model
         'brandName',
         'second_category_id',
         'main_category_id',
-        'images',
         'is_feature',
         'OE_No',
         'price'
@@ -38,4 +37,10 @@ class Item extends Model
     {
         return $this->belongsToMany(Car::class, 'car_items');
     }
+
+    public function images()
+{
+    return $this->hasMany(ItemImage::class);
+}
+
 }

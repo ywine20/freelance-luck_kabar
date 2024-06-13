@@ -19,7 +19,6 @@ class CreateItemsTable extends Migration
             $table->string('brandName');
             $table->unsignedBigInteger('second_category_id');
             $table->unsignedBigInteger('main_category_id');
-            $table->text('images');
             $table->boolean('is_feature');
             $table->string('OE_No');
             $table->float('price', 8, 2); // Specify precision and scale if needed

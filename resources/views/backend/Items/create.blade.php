@@ -45,6 +45,7 @@
                 <label for="images">Images</label>
                 <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
             </div>
+            <div id="imagePreview"></div>
             <div class="form-group">
                 <label for="is_feature">Is Feature</label>
                 <input type="checkbox" id="is_feature" name="is_feature" value="1">
@@ -56,4 +57,30 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <script>
+        function previewImages() {
+            var preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            if (this.files) {
+                [].forEach.call(this.files, readAndPreview);
+            }
+
+            function readAndPreview(file) {
+                if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    return alert(file.name + " is not an image");
+                }
+                var reader = new FileReader();
+                reader.addEventListener("load", function() {
+                    var image = new Image();
+                    image.height = 100;
+                    image.title = file.name;
+                    image.src = this.result;
+                    preview.appendChild(image);
+                });
+                reader.readAsDataURL(file);
+            }
+        }
+
+        document.getElementById('images').addEventListener("change", previewImages);
+    </script>
 @endsection
