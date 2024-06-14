@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\SecondCategory;
 use App\Models\MainCategory;
 use App\Models\Car;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -66,45 +67,40 @@ class ItemController extends Controller
    // ItemController.php
 
    public function update(Request $request, Item $item)
-   {
-       $request->validate([
-           'second_category_id' => 'required|exists:second_categories,id',
-           'main_category_id' => 'required|exists:main_categories,id',
-           'name' => 'required|string|max:255',
-           'brandName' => 'required|string|max:255',
-           'images' => 'nullable|array',
-           'images.*' => 'image|max:2048',
-           'is_feature' => 'required|boolean',
-           'OE_No' => 'required|string|max:255|unique:items,OE_No,' . $item->id,
-           'price' => 'required|numeric',
-           'cars' => 'array|exists:cars,id',
-       ]);
-   
-       $data = $request->all();
-       $item->update($data);
-       $item->cars()->sync($request->cars);
-   
-       // Delete images
-       if ($request->has('delete_images')) {
-           foreach ($request->delete_images as $imageId) {
-               $image = $item->images()->find($imageId);
-               if ($image) {
-                   if (Storage::disk('public')->exists($image->path)) {
-                       Storage::disk('public')->delete($image->path);
-                   }
-                   $image->delete();
-               }
-           }
-       }
-   
-       // Handle new images
-       if ($request->hasFile('images')) {
-           $this->handleImageUploads($request, $item);
-       }
-   
-       return redirect()->route('admin.items.index')->with('success', 'Item updated successfully.');
-   }
-   
+{
+    $request->validate([
+        'second_category_id' => 'required|exists:second_categories,id',
+        'main_category_id' => 'required|exists:main_categories,id',
+        'name' => 'required|string|max:255',
+        'brandName' => 'required|string|max:255',
+        'images' => 'nullable|array',
+        'images.*' => 'image|max:2048',
+        'is_feature' => 'required|boolean',
+        'OE_No' => 'required|string|max:255|unique:items,OE_No,' . $item->id,
+        'price' => 'required|numeric',
+        'cars' => 'array|exists:cars,id',
+    ]);
+
+    $data = $request->all();
+    $item->update($data);
+    $item->cars()->sync($request->cars);
+
+    foreach ($item->images as $image) {
+        if ($request->has('delete_image_' . $image->id)) {
+            if (Storage::disk('public')->exists($image->path)) {
+                Storage::disk('public')->delete($image->path);
+            }
+            $image->delete();
+        }
+    }
+
+    // Handle new images
+    if ($request->hasFile('images')) {
+        $this->handleImageUploads($request, $item);
+    }
+
+    return redirect()->route('admin.items.index')->with('success', 'Item updated successfully.');
+}
 
 private function handleImageUploads(Request $request, Item $item)
 {
