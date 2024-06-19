@@ -7,52 +7,79 @@
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+                @if ($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="brandName">Brand Name</label>
-                <input type="text" class="form-control" id="brandName" name="brandName" required>
+                <input type="text" class="form-control" id="brandName" name="brandName" value="{{ old('brandName') }}" required>
+                @if ($errors->has('brandName'))
+                    <span class="text-danger">{{ $errors->first('brandName') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="OE_No">OE Number</label>
-                <input type="text" class="form-control" id="OE_No" name="OE_No" required>
+                <input type="text" class="form-control" id="OE_No" name="OE_No" value="{{ old('OE_No') }}" required>
+                @if ($errors->has('OE_No'))
+                    <span class="text-danger">{{ $errors->first('OE_No') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="second_category_id">Second Category</label>
                 <select class="form-control" id="second_category_id" name="second_category_id" required>
                     @foreach ($secondCategories as $secondCategory)
-                        <option value="{{ $secondCategory->id }}">{{ $secondCategory->name }}</option>
+                        <option value="{{ $secondCategory->id }}" {{ old('second_category_id') == $secondCategory->id ? 'selected' : '' }}>{{ $secondCategory->name }}</option>
                     @endforeach
                 </select>
+                @if ($errors->has('second_category_id'))
+                    <span class="text-danger">{{ $errors->first('second_category_id') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="main_category_id">Main Category</label>
                 <select class="form-control" id="main_category_id" name="main_category_id" required>
                     @foreach ($mainCategories as $mainCategory)
-                        <option value="{{ $mainCategory->id }}">{{ $mainCategory->name }}</option>
+                        <option value="{{ $mainCategory->id }}" {{ old('main_category_id') == $mainCategory->id ? 'selected' : '' }}>{{ $mainCategory->name }}</option>
                     @endforeach
                 </select>
+                @if ($errors->has('main_category_id'))
+                    <span class="text-danger">{{ $errors->first('main_category_id') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="cars">Cars</label>
                 <select class="form-control" id="cars" name="cars[]" multiple>
                     @foreach ($cars as $car)
-                        <option value="{{ $car->id }}">{{ $car->description }}</option>
+                        <option value="{{ $car->id }}" {{ collect(old('cars'))->contains($car->id) ? 'selected' : '' }}>{{ $car->description }}</option>
                     @endforeach
                 </select>
+                @if ($errors->has('cars'))
+                    <span class="text-danger">{{ $errors->first('cars') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="images">Images</label>
                 <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
+                @if ($errors->has('images'))
+                    <span class="text-danger">{{ $errors->first('images') }}</span>
+                @endif
             </div>
             <div id="imagePreview"></div>
             <div class="form-group">
                 <label for="is_feature">Is Feature</label>
-                <input type="checkbox" id="is_feature" name="is_feature" value="1">
+                <input type="checkbox" id="is_feature" name="is_feature" value="1" {{ old('is_feature') ? 'checked' : '' }}>
+                @if ($errors->has('is_feature'))
+                    <span class="text-danger">{{ $errors->first('is_feature') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" class="form-control" id="price" name="price" required>
+                <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" required>
+                @if ($errors->has('price'))
+                    <span class="text-danger">{{ $errors->first('price') }}</span>
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
