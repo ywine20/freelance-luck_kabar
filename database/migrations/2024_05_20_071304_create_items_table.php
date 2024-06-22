@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('second_category_id');
             $table->unsignedBigInteger('main_category_id');
             $table->boolean('is_feature');
+            $table->boolean('is_universal');
             $table->string('OE_No')->unique();
             $table->float('price'); // Specify precision and scale if needed
             $table->timestamps();

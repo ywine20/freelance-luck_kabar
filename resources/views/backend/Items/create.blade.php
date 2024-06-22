@@ -49,16 +49,25 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="cars">Cars</label>
-                <select class="form-control" id="cars" name="cars[]" multiple>
-                    @foreach ($cars as $car)
-                        <option value="{{ $car->id }}" {{ collect(old('cars'))->contains($car->id) ? 'selected' : '' }}>{{ $car->description }}</option>
-                    @endforeach
-                </select>
-                @if ($errors->has('cars'))
-                    <span class="text-danger">{{ $errors->first('cars') }}</span>
-                @endif
-            </div>
+    <label for="is_universal">Is Universal</label><br>
+    <input type="radio" id="is_universal_yes" name="is_universal" value="1" {{ old('is_universal') == '1' ? 'checked' : '' }}> Yes
+    <input type="radio" id="is_universal_no" name="is_universal" value="0" {{ old('is_universal') == '0' ? 'checked' : '' }}> No
+    @if ($errors->has('is_universal'))
+        <span class="text-danger">{{ $errors->first('is_universal') }}</span>
+    @endif
+</div>
+<div class="form-group" id="cars-group">
+    <label for="cars">Cars</label>
+    <select class="form-control" id="cars" name="cars[]" multiple>
+        @foreach ($cars as $car)
+            <option value="{{ $car->id }}" {{ collect(old('cars'))->contains($car->id) ? 'selected' : '' }}>{{ $car->description }}</option>
+        @endforeach
+    </select>
+    @if ($errors->has('cars'))
+        <span class="text-danger">{{ $errors->first('cars') }}</span>
+    @endif
+</div>
+
             <div class="form-group">
                 <label for="images">Images</label>
                 <input type="file" class="form-control-file" id="images" name="images[]" multiple required>

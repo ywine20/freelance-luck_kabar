@@ -15,6 +15,7 @@ class Item extends Model
         'second_category_id',
         'main_category_id',
         'is_feature',
+        'is_universal',
         'OE_No',
         'price'
     ];
