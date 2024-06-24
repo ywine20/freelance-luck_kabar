@@ -17,6 +17,7 @@
                 <th>OE Number</th>
                 <th>Price</th>
                 <th>Cars</th>
+                <th>Is Universal</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -68,6 +69,7 @@
                     {{ $car->description }}<br>
                     @endforeach
                 </td>
+                <td>{{ $item->is_universal ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('admin.items.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                     <form action="{{ route('admin.items.destroy', $item->id) }}" method="POST" style="display:inline-block;">

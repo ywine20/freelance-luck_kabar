@@ -49,25 +49,24 @@
                 @endif
             </div>
             <div class="form-group">
-    <label for="is_universal">Is Universal</label><br>
-    <input type="radio" id="is_universal_yes" name="is_universal" value="1" {{ old('is_universal') == '1' ? 'checked' : '' }}> Yes
-    <input type="radio" id="is_universal_no" name="is_universal" value="0" {{ old('is_universal') == '0' ? 'checked' : '' }}> No
-    @if ($errors->has('is_universal'))
-        <span class="text-danger">{{ $errors->first('is_universal') }}</span>
-    @endif
-</div>
-<div class="form-group" id="cars-group">
-    <label for="cars">Cars</label>
-    <select class="form-control" id="cars" name="cars[]" multiple>
-        @foreach ($cars as $car)
-            <option value="{{ $car->id }}" {{ collect(old('cars'))->contains($car->id) ? 'selected' : '' }}>{{ $car->description }}</option>
-        @endforeach
-    </select>
-    @if ($errors->has('cars'))
-        <span class="text-danger">{{ $errors->first('cars') }}</span>
-    @endif
-</div>
-
+                <label for="is_universal">Is Universal</label><br>
+                <input type="radio" id="is_universal_yes" name="is_universal" value="1" {{ old('is_universal') == '1' ? 'checked' : '' }}> Yes
+                <input type="radio" id="is_universal_no" name="is_universal" value="0" {{ old('is_universal') == '0' ? 'checked' : '' }}> No
+                @if ($errors->has('is_universal'))
+                    <span class="text-danger">{{ $errors->first('is_universal') }}</span>
+                @endif
+            </div>
+            <div class="form-group" id="cars-group">
+                <label for="cars">Cars</label>
+                <select class="form-control" id="cars" name="cars[]" multiple style="height: 150px; overflow-y: auto;">
+                    @foreach ($cars as $car)
+                        <option value="{{ $car->id }}" {{ collect(old('cars'))->contains($car->id) ? 'selected' : '' }}>{{ $car->description }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('cars'))
+                    <span class="text-danger">{{ $errors->first('cars') }}</span>
+                @endif
+            </div>
             <div class="form-group">
                 <label for="images">Images</label>
                 <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
@@ -118,5 +117,23 @@
         }
 
         document.getElementById('images').addEventListener("change", previewImages);
+
+        function toggleCarsDropdown() {
+            var carsGroup = document.getElementById('cars-group');
+            var isUniversalYes = document.getElementById('is_universal_yes');
+            var isUniversalNo = document.getElementById('is_universal_no');
+
+            if (isUniversalYes.checked) {
+                carsGroup.style.display = 'none';
+            } else {
+                carsGroup.style.display = 'block';
+            }
+        }
+
+        document.getElementById('is_universal_yes').addEventListener("change", toggleCarsDropdown);
+        document.getElementById('is_universal_no').addEventListener("change", toggleCarsDropdown);
+
+        // Initial call to set the correct state on page load
+        toggleCarsDropdown();
     </script>
 @endsection

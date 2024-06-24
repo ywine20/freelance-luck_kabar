@@ -63,6 +63,13 @@
                 <input type="checkbox" id="is_feature" name="is_feature" value="1" {{ $item->is_feature ? 'checked' : '' }}>
             </div>
             <div class="form-group">
+                <label for="is_universal">Is Universal</label>
+                <div>
+                    <label><input type="radio" id="is_universal_yes" name="is_universal" value="1" {{ $item->is_universal ? 'checked' : '' }}> Yes</label>
+                    <label><input type="radio" id="is_universal_no" name="is_universal" value="0" {{ !$item->is_universal ? 'checked' : '' }}> No</label>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="OE_No">OE Number</label>
                 <input type="text" class="form-control" id="OE_No" name="OE_No" value="{{ $item->OE_No }}" required>
             </div>
