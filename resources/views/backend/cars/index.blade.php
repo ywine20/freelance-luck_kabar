@@ -8,9 +8,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Brand</th>
-                    <th>Company</th>
+                    <th>Car Company</th>
                     <th>Series</th>
+                    <th>Engine Power</th>
                     <th>Model</th>
                     <th>Year</th>
                     <th>Description</th>
@@ -21,9 +21,9 @@
                 @foreach ($cars as $car)
                     <tr>
                         <td>{{ $car->id }}</td>
-                        <td>{{ $car->brand->name }}</td>
                         <td>{{ $car->company->name }}</td>
                         <td>{{ $car->series->name }}</td>
+                        <td>{{ $car->engine ? $car->engine->enginepower : 'N/A' }}</td>
                         <td>{{ $car->model->name }}</td>
                         <td>{{ $car->year->year }}</td>
                         <td>{{ $car->description }}</td>

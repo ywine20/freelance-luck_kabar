@@ -138,10 +138,17 @@
         </li>
         <li class="c-sidebar-nav-item">
             <x-utils.link
+        :href="route('admin.engine_powers.index')"
+        class="c-sidebar-nav-link"
+        :text="__('Engine Powers')" />
+        </li>
+
+        <!-- <li class="c-sidebar-nav-item">
+            <x-utils.link
                 :href="route('admin.brands.index')"
                 class="c-sidebar-nav-link"
                 :text="__('Brands')" />
-        </li>
+        </li> -->
         <li class="c-sidebar-nav-item">
             <x-utils.link
                 :href="route('admin.companies.index')"

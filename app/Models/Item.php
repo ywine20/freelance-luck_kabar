@@ -11,10 +11,11 @@ class Item extends Model
 
     protected $fillable = [
         'name',
+        'brandName',
         'second_category_id',
         'main_category_id',
-        'image',
         'is_feature',
+        'is_universal',
         'OE_No',
         'price'
     ];
@@ -37,4 +38,10 @@ class Item extends Model
     {
         return $this->belongsToMany(Car::class, 'car_items');
     }
+
+    public function images()
+{
+    return $this->hasMany(ItemImage::class);
+}
+
 }

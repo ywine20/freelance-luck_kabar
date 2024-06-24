@@ -6,16 +6,16 @@
         <form action="{{ route('admin.cars.update', $car->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="brand_id">Brand:</label>
                 <select name="brand_id" id="brand_id" class="form-control">
                     @foreach($brands as $brand)
                         <option value="{{ $brand->id }}" {{ $car->brand_id == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> -->
             <div class="form-group">
-                <label for="company_id">Company:</label>
+                <label for="company_id">Car Company:</label>
                 <select name="company_id" id="company_id" class="form-control">
                     @foreach($companies as $company)
                         <option value="{{ $company->id }}" {{ $car->company_id == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
@@ -27,6 +27,14 @@
                 <select name="series_id" id="series_id" class="form-control">
                     @foreach($series as $serie)
                         <option value="{{ $serie->id }}" {{ $car->series_id == $serie->id ? 'selected' : '' }}>{{ $serie->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="engine_id">Engine Power:</label>
+                <select name="engine_id" id="engine_id" class="form-control">
+                    @foreach($engines as $engine)
+                        <!-- <option value="{{ $engine->id }}">{{ $engine->enginepower }}</option> -->
                     @endforeach
                 </select>
             </div>

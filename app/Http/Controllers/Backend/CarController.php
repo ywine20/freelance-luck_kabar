@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\Series;
 use App\Models\CarModel;
 use App\Models\Year;
+use App\Models\EnginePower;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -21,23 +22,25 @@ class CarController extends Controller
 
     public function create()
     {
-        $brands = Brand::all();
+        // $brands = Brand::all();
         $companies = Company::all();
         $series = Series::all();
         $models = CarModel::all();
         $years = Year::all();
+        $engines =EnginePower::all();
 
-        return view('backend.cars.create', compact('brands', 'companies', 'series', 'models', 'years'));
+        return view('backend.cars.create', compact( 'engines','companies', 'series', 'models', 'years'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'brand_id' => 'required|exists:brands,id',
+            // 'brand_id' => 'required|exists:brands,id',
             'company_id' => 'required|exists:companies,id',
             'series_id' => 'required|exists:series,id',
             'model_id' => 'required|exists:car_models,id',
             'year_id' => 'required|exists:years,id',
+            'engine_id'=>'required|exists:engine_powers,id',
             'description' => 'required|string',
         ]);
     
@@ -48,19 +51,21 @@ class CarController extends Controller
 
     public function edit(Car $car)
     {
-        $brands = Brand::all();
+        // $brands = Brand::all();
         $companies = Company::all();
         $series = Series::all();
         $models = CarModel::all();
         $years = Year::all();
+        $engines =EnginePower::all();
 
-        return view('backend.cars.edit', compact('car', 'brands', 'companies', 'series', 'models', 'years'));
+        return view('backend.cars.edit', compact('engines','car', 'companies', 'series', 'models', 'years'));
     }
 
     public function update(Request $request, Car $car)
     {
         $request->validate([
-            'brand_id' => 'required|exists:brands,id',
+            // 'brand_id' => 'required|exists:brands,id',
+            'engine_id'=>'required|exists:engine_powers,id',
             'company_id' => 'required|exists:companies,id',
             'series_id' => 'required|exists:series,id',
             'model_id' => 'required|exists:car_models,id',
